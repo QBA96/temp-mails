@@ -225,7 +225,8 @@ class _Livewire(_WaitForMail):
                     "id": email["id"],
                     "time": email["date"],
                     "subject": email["subject"],
-                    "content": email["content"]
+                    "content": email["content"],
+                    "attachments": email["attachments"]
                 } 
                 for email in data["serverMemo"]["data"]["messages"]
             ] if ("data" in data["serverMemo"] and not "error" in data["serverMemo"]["data"]) else []
@@ -446,7 +447,8 @@ class _Livewire2(_WaitForMail):
                     "time": email["date"],
                     "subject": email["subject"],
                     "from": email.get("sender_email"),
-                    "content": email["content"]
+                    "content": email["content"],
+                    "attachments": email["attachments"]
             } for email in data["serverMemo"]["data"]["messages"]
             ] if ("data" in data["serverMemo"] and not "error" in data["serverMemo"]["data"]) else []
 
@@ -1873,4 +1875,5 @@ class _Web(_WaitForMail):
             data = r.json()
             return data["body"].get("html", data["body"]["text"])
         
+
 
